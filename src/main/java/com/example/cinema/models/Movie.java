@@ -19,11 +19,16 @@ public class Movie {
     @Column(name = "duration")
     private int duration;
 
-    public Movie(String title)
+    public Movie(String title, int rating, int duration)
     {
         this.title = title;
-        this.rating = 0;
-        this.duration = 0;
+        this.rating = rating;
+        this.duration = duration;
+    }
+
+    public Movie()
+    {
+
     }
 
     public long getId() {
