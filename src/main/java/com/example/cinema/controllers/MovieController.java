@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/movies")
 public class MovieController {
@@ -23,15 +25,19 @@ public class MovieController {
         return new ResponseEntity<>(reply, HttpStatus.CREATED);
     }
 
+    //Added from lab review
+    @GetMapping
+    public ResponseEntity<List<Movie>> getAllMovies()
+    {
+        List<Movie> movies = movieService.getAllMovies();
+        return new ResponseEntity<>(movies, HttpStatus.OK);
+    }
 
-
-
-
-
-
-
-
-
-
-
+    //Added from lab review
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Movie>getMovieById(@PathVariable Long id)
+    {
+        Movie movie = movieService.getMovieById(id);
+        return new ResponseEntity<>(movie, HttpStatus.OK);
+    }
 }
